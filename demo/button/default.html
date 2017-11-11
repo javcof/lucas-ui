@@ -3,7 +3,7 @@
 	<head>
 		<title>Default functionality</title>
 		<link rel="stylesheet" href="../../themes/base/theme.css" />
-		<link rel="stylesheet" href="../../themes/base/progressbar.css" />
+		<link rel="stylesheet" href="../../themes/base/button.css" />
 	</head>
 	<body>
 		<form action="#">
@@ -19,11 +19,15 @@
 		<script src="../../ui/widgets/button.js"></script>
 		<script>
 			$(function() {
+				$("button, input, a").click(function(e) {
+					e.preventDefault();
+				});
+				
 				$(".widget button").button();
 				
 				$(".widget input[type=submit]").button({
 					disabled: true
-				});
+				}).attr("disabled", true);
 				
 				$(".widget a").button();
 			});
