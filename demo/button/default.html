@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Default functionality</title>
+		<link rel="stylesheet" href="../../themes/base/theme.css" />
+		<link rel="stylesheet" href="../../themes/base/progressbar.css" />
+	</head>
+	<body>
+		<form action="#">
+		<div class="widget">
+			<button>A button element</button>
+			<input type="submit" value="A submit button" />
+			<a href="#">An anchor</a>
+		</div>
+		</form>
+
+		<script src="../../external/jquery/jquery.js"></script>
+		<script src="../../ui/widget.js"></script>
+		<script src="../../ui/widgets/button.js"></script>
+		<script>
+			$(function() {
+				$(".widget button").button();
+				
+				$(".widget input[type=submit]").button({
+					disabled: true
+				});
+				
+				$(".widget a").button();
+			});
+		</script>
+	</body>
+</html>

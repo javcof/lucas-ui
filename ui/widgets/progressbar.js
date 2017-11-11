@@ -37,5 +37,4 @@ $.widget("ui.progressbar", {
 		}
 		return val;
 	}
-
 });
