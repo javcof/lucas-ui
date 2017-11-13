@@ -3,16 +3,31 @@
 	<head>
 		<title>Default functionality</title>
 		<link rel="stylesheet" href="../../themes/base/theme.css" />
+		<link rel="stylesheet" href="../../themes/base/core.css" />
 		<link rel="stylesheet" href="../../themes/base/button.css" />
 	</head>
 	<body>
 		<form action="#">
 		<div class="widget">
+			<h1>Widget Buttons</h1>
 			<button>A button element</button>
 			<input type="submit" value="A submit button" />
 			<a href="#">An anchor</a>
 		</div>
 		</form>
+		
+		<h1>CSS Buttons</h1>
+		<button class="ui-button ui-widget ui-corner-all">A button element</button>
+		<input type="submit" value="A submit button" class="ui-button ui-widget ui-corner-all" />
+		<a href="#" class="ui-button ui-widget ui-corner-all">An anchor</a>
+		
+		<h1>Icon Buttons</h1>
+		<div>
+			<button id="nicon">None icon button</button>
+			<button id="licon">Left icon button</button>
+			<button id="ricon">Right icon button</button>
+		</div>
+		
 
 		<script src="../../external/jquery/jquery.js"></script>
 		<script src="../../ui/widget.js"></script>
@@ -30,6 +45,16 @@
 				}).attr("disabled", true);
 				
 				$(".widget a").button();
+				
+				$("#nicon").button();
+				$("#licon").button({
+					icon: "ui-icon-gear",
+					iconPosition: "left"
+				});
+				$("#ricon").button({
+					icon: "ui-icon-gear",
+					iconPosition: "right"
+				});
 			});
 		</script>
 	</body>
