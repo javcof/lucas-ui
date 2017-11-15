@@ -18,6 +18,8 @@ $.widget("ui.button", {
 				bottom: "append",
 				left: "prepend"
 			};
+		
+		this.options.label = this.element.is("input") ? this.element.val() : this.element.html();
 
 		this.element.addClass("ui-button ui-widget");
 		this._setOption("disabled", this.options.disabled);
@@ -33,7 +35,7 @@ $.widget("ui.button", {
 				
 				if (!this.options.showLabel) {
 					this.element.addClass("ui-button-icon-only");
-					// this.element.attr("title", this.options.label);
+					this.element.attr("title", this.options.label);
 				}
 			}
 		}
