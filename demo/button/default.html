@@ -24,6 +24,7 @@
 		<h1>Icon Buttons</h1>
 		<div>
 			<button id="nicon">None icon button</button>
+			<button id="oicon">Only icon button</button>
 			<button id="licon">Left icon button</button>
 			<button id="ricon">Right icon button</button>
 		</div>
@@ -47,6 +48,10 @@
 				$(".widget a").button();
 				
 				$("#nicon").button();
+				$("#oicon").button({
+					showLabel: false,
+					icon: "ui-icon-gear"
+				});
 				$("#licon").button({
 					icon: "ui-icon-gear",
 					iconPosition: "left"

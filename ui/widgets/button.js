@@ -4,7 +4,10 @@ $.widget("ui.button", {
 		disabled: null,
 		
 		icon: null,
-		iconPosition: null
+		iconPosition: "left",
+		
+		label: null,
+		showLabel: true
 	},
 	
 	_create: function() {
@@ -27,8 +30,15 @@ $.widget("ui.button", {
 				if (this.options.iconPosition && (preOrAppend = dir[this.options.iconPosition])) {
 					this.element[preOrAppend](this.icon);
 				}
+				
+				if (!this.options.showLabel) {
+					this.element.addClass("ui-button-icon-only");
+					// this.element.attr("title", this.options.label);
+				}
 			}
 		}
+		
+
 		
 		if (this.element.is("a")) {
 			this._on({
