@@ -33,8 +33,9 @@ $.widget("ui.spinner", {
 				e.preventDefault();
 				
 				that.element.focus();
-				var value = that.element.val() || 0;
-				that.element.val(parseInt(value) + that.options.step);
+				that._repeat(null, 1, e);
+			}).on("mouseup", function(e) {
+				clearTimeout(that.timer);
 			});
 			
 		this.buttons.last()
@@ -46,12 +47,25 @@ $.widget("ui.spinner", {
 				e.preventDefault();
 				
 				that.element.focus();
-				var value = that.element.val() || 0;
-				that.element.val(parseInt(value) - that.options.step);
+				that._repeat(null, -1, e);
+			}).on("mouseup", function(e) {
+				clearTimeout(that.timer);
 			});
 	},
 	
-	_spin: function(step, event) {
+	_repeat: function(i, steps, event) {
+		i = i || 500;
 		
+		clearTimeout(this.timer);
+		this.timer = this._delay(function() {
+			this._repeat(40, steps, event);
+		}, i);
+		
+		this._spin(steps * this.options.step, event);
+	},
+	
+	_spin: function(step, event) {
+		var value = this.element.val() || 0;
+		this.element.val(parseInt(value) + step);
 	}
 });
