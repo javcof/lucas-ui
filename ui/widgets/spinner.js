@@ -65,7 +65,11 @@ $.widget("ui.spinner", {
 	},
 	
 	_spin: function(step, event) {
-		var value = this.element.val() || 0;
-		this.element.val(parseInt(value) + step);
+		var value = this._constraint(parseInt(this.element.val()));
+		this.element.val(value + step);
+	},
+	
+	_constraint: function(val) {
+		return (typeof val === "number" && !isNaN(val)) ? val : 0;
 	}
 });
