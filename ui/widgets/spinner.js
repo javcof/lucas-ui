@@ -11,6 +11,13 @@ $.widget("ui.spinner", {
 		}
 	},
 	
+	value: function(val) {
+		if (val === undefined) {
+			return this._constraint(this.element.val());
+		}
+		this.element.val(val);
+	},
+	
 	_create: function() {
 		
 		var that = this;
@@ -71,5 +78,17 @@ $.widget("ui.spinner", {
 	
 	_constraint: function(val) {
 		return (typeof val === "number" && !isNaN(val)) ? val : 0;
+	},
+	
+	_setOptionDisabled: function(val) {
+		this._super(val);
+		
+		this.uiSpinner.toggleClass("ui-state-disabled");
+		this.element.prop("disabled", !!val);
+	},
+	
+	_destroy: function() {
+		this.element.prop("disable, false");
+		this.uiSpinner.replaceWith(this.element.removeClass("ui-spinner-input"));
 	}
 });

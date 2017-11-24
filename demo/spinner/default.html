@@ -14,6 +14,16 @@
 		</p>
 		
 		<p>
+			<button id="disable">Toggle disable/enable</button>
+			<button id="destroy">Toggle widget</button>
+		</p>
+		
+		<p>
+			<button id="getvalue">Get value</button>
+			<button id="setvalue">Set value to 5</button>
+		</p>
+		
+		<p>
 			<input type="number" />
 		</p>
 
@@ -23,8 +33,28 @@
 		<script src="../../ui/widgets/spinner.js"></script>
 		<script>
 			$(function() {
-				$("#spinner").spinner({
+				var spinner = $("#spinner").spinner({
 					step: 5
+				});
+				$("#disable").on("click", function() {
+					if (spinner.spinner("option", "disabled")) {
+						spinner.spinner("enable");
+					} else {
+						spinner.spinner("disable");
+					}
+				});
+				$("#destroy").on("click", function() {
+					if (spinner.spinner("instance")) {
+						spinner.spinner("destroy");
+					} else {
+						spinner.spinner();
+					}
+				});
+				$("#getvalue").on("click", function() {
+					alert(spinner.spinner("value"));
+				});
+				$("#setvalue").on("click", function() {
+					spinner.spinner("value", 5);
 				});
 			});
 		</script>
