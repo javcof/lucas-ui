@@ -13,7 +13,7 @@ $.widget("ui.spinner", {
 	
 	value: function(val) {
 		if (val === undefined) {
-			return this._constraint(this.element.val());
+			return this._constraint(parseInt(this.element.val()));
 		}
 		this.element.val(val);
 	},
